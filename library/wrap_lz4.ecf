@@ -24,7 +24,7 @@
 				<platform value="windows"/>
 			</condition>		
 		</external_include>
-		<external_include location="$ECF_CONFIG_PATH/C/include">
+		<external_include location="/usr/include/">
 			<condition>
 				<platform excluded_value="windows"/>
 			</condition>
@@ -51,6 +51,14 @@
 				<platform value="windows"/>
 			</condition>
 		</external_object>
+		<external_object location="`pkg-config --libs --cflags liblz4`">
+			<condition>
+				<platform excluded_value="windows"/>
+			</condition>
+		</external_object>
+
+
+
 		<external_object location="$ECF_CONFIG_PATH/C/spec/$ISE_C_COMPILER/$ISE_PLATFORM/lib/eif_liblz4.lib">
 			<condition>
 				<platform value="windows"/>
