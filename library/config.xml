@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<ewg_config name="liblz4">
+
+  <rule_list>
+  		  <!-- Ignore everything that starts with an underscore. -->
+    <rule>
+      <match>
+          <identifier name="._*"/>  
+      </match>
+       <wrapper type="none">
+      </wrapper>
+    </rule>
+
+    	<!--   Include version functions* -->
+    <rule>
+       <match>
+           <identifier name="LZ4_version.*"/>
+       </match>
+       <wrapper type="default">
+      </wrapper>
+    </rule> 
+
+    	<!--   Include decompress functions* -->
+    <rule>
+       <match>
+           <identifier name="LZ4_decompress.*"/>
+       </match>
+       <wrapper type="default">
+      </wrapper>
+    </rule> 
+
+    	<!--   Include compress functions* -->
+    <rule>
+       <match>
+           <identifier name="LZ4_compress.*"/>
+       </match>
+       <wrapper type="default">
+      </wrapper>
+    </rule> 
+
+   		<!-- And the rest should be ignored -->
+    <rule>
+      <match>
+      </match>
+       <wrapper type="none">
+      </wrapper>
+    </rule>
+  </rule_list>
+
+</ewg_config>
