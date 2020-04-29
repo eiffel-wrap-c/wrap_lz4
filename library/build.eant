@@ -23,7 +23,7 @@
     <set name="system_dir" value="${cwd}"/>
     <set name="wrap_c.library_name" value="wrap_lz4"/>
     <set name="wrap_c.full_header_name" value="${cwd}{path_separator}C{path_separator}include${path_separator}lz4.h" if="${is_windows}"/>
-	<set name="wrap_c.full_header_name" value="/usr/include${path_separator}lz4.h" unless="${is_windows}"/>
+    <set name="wrap_c.full_header_name" value="/usr/local/include${path_separator}lz4.h" unless="${is_windows}"/>
     <set name="wrap_c.use_config_file" value="True"/>
     <set name="wrap_c.verbose" value="--verbose"/>
     <set name="wrap_c.wrapper_dir" value="${system_dir}${path_separator}generated_wrapper"/>

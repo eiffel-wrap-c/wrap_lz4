@@ -24,7 +24,7 @@
 				<platform value="windows"/>
 			</condition>		
 		</external_include>
-		<external_include location="/usr/include/">
+		<external_include location="/usr/local/include/">
 			<condition>
 				<platform excluded_value="windows"/>
 			</condition>
@@ -51,7 +51,7 @@
 				<platform value="windows"/>
 			</condition>
 		</external_object>
-		<external_object location="`pkg-config --libs --cflags liblz4`">
+		<external_object location="/usr/local/lib/liblz4.a">
 			<condition>
 				<platform excluded_value="windows"/>
 			</condition>

@@ -95,25 +95,25 @@ feature {ANY} -- Member Access
 			tabletype_set: a_value = tabletype
 		end
 
-	dictionary:  detachable STRING
+	dictionary:  detachable C_STRING
 			-- Access member `dictionary`
 		require
 			exists: exists
 		do
 			if attached c_dictionary (item) as l_ptr then
-				Result := (create {C_STRING}.make_by_pointer (l_ptr)).string
+				create Result.make_by_pointer (l_ptr)
 			end
 		ensure
 			result_void: Result = Void implies c_dictionary (item) = default_pointer
-			result_not_void: attached Result as l_result implies l_result.same_string ((create {C_STRING}.make_by_pointer (item)).string)
+			result_not_void: attached Result as l_result implies l_result.string.same_string ((create {C_STRING}.make_by_pointer (item)).string)
 		end
 
-	set_dictionary (a_value: STRING) 
+	set_dictionary (a_value: C_STRING) 
 			-- Change the value of member `dictionary` to `a_value`.
 		require
 			exists: exists
 		do
-			set_c_dictionary (item, (create {C_STRING}.make (a_value)).item )
+			set_c_dictionary (item, a_value.item )
 		end
 
 	dictctx: detachable LZ4_STREAM_T_INTERNAL_STRUCT_API 
@@ -198,7 +198,7 @@ feature {NONE} -- Implementation wrapper for struct struct LZ4_stream_t_internal
 			"C inline use <lz4.h>"
 		alias
 			"[
-				((struct LZ4_stream_t_internal*)$an_item)->currentOffset =  (unsigned int)$a_value
+				((struct LZ4_stream_t_internal*)$an_item)->currentOffset =  (uint32_t)$a_value
 			]"
 		ensure
 			currentoffset_set: a_value = c_currentoffset (an_item)
@@ -222,7 +222,7 @@ feature {NONE} -- Implementation wrapper for struct struct LZ4_stream_t_internal
 			"C inline use <lz4.h>"
 		alias
 			"[
-				((struct LZ4_stream_t_internal*)$an_item)->dirty =  (unsigned short)$a_value
+				((struct LZ4_stream_t_internal*)$an_item)->dirty =  (uint16_t)$a_value
 			]"
 		ensure
 			dirty_set: a_value = c_dirty (an_item)
@@ -246,7 +246,7 @@ feature {NONE} -- Implementation wrapper for struct struct LZ4_stream_t_internal
 			"C inline use <lz4.h>"
 		alias
 			"[
-				((struct LZ4_stream_t_internal*)$an_item)->tableType =  (unsigned short)$a_value
+				((struct LZ4_stream_t_internal*)$an_item)->tableType =  (uint16_t)$a_value
 			]"
 		ensure
 			tabletype_set: a_value = c_tabletype (an_item)
@@ -270,7 +270,7 @@ feature {NONE} -- Implementation wrapper for struct struct LZ4_stream_t_internal
 			"C inline use <lz4.h>"
 		alias
 			"[
-				((struct LZ4_stream_t_internal*)$an_item)->dictionary =  (unsigned char const*)$a_value
+				((struct LZ4_stream_t_internal*)$an_item)->dictionary =  (uint8_t const*)$a_value
 			]"
 		ensure
 			dictionary_set: a_value = c_dictionary (an_item)
@@ -318,7 +318,7 @@ feature {NONE} -- Implementation wrapper for struct struct LZ4_stream_t_internal
 			"C inline use <lz4.h>"
 		alias
 			"[
-				((struct LZ4_stream_t_internal*)$an_item)->dictSize =  (unsigned int)$a_value
+				((struct LZ4_stream_t_internal*)$an_item)->dictSize =  (uint32_t)$a_value
 			]"
 		ensure
 			dictsize_set: a_value = c_dictsize (an_item)

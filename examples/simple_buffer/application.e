@@ -49,12 +49,12 @@ feature {NONE} -- Initialization
 			compressed_data_size := lz4.lz4_compress_default (src, compressed_data, src.count, max_dst_size)
 
 			if compressed_data_size <= 0 then
-				print ("%N A 0 or negative result from LZ4_compress_default() indicates a failure trying to compress the data.")
+				print (" A 0 or negative result from LZ4_compress_default() indicates a failure trying to compress the data.%N")
 				create exception
 				exception.raise
 			end
 			if compressed_data_size > 0 then
-			    print ("%NWe successfully compressed some data! Ratio: " + (compressed_data_size / src.count).out)
+			    print ("We successfully compressed some data! Ratio: " + (compressed_data_size / src.count).out + "%N")
 			end
 
 
@@ -77,13 +77,13 @@ feature {NONE} -- Initialization
 			decompressed_size := lz4.lz4_decompress_safe (compressed_data, regen_buffer, compressed_data_size, src.count)
 
 			if decompressed_size >= 0 then
-			    print("%NWe successfully decompressed some data!")
+			    print("We successfully decompressed some data!%N")
 			end
 
 				-- Not only does a positive return value mean success,
 		  		-- value returned == number of bytes regenerated from compressed_data stream.
  			 if decompressed_size /= src.count then
- 			 	print ("Decompressed data is different from original")
+ 			 	print ("Decompressed data is different from original %N")
  			 	create exception
 				exception.raise
  			 end
