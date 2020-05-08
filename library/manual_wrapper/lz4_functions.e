@@ -20,11 +20,15 @@ feature
 	lz4_compress_default (src: STRING; dst: STRING; srcsize: INTEGER; dstcapacity: INTEGER): INTEGER
 		do
 			Result := lz4_compress_default_api (src.area.base_address, dst.area.base_address, srcsize, dstcapacity)
+		ensure
+			instance_free: class
 		end
 
 	lz4_decompress_safe (src: STRING; dst: STRING; compressedsize: INTEGER; dstcapacity: INTEGER): INTEGER
 		do
 			Result := lz4_decompress_safe_api (src.area.base_address, dst.area.base_address, compressedsize,  dstcapacity)
+		ensure
+			instance_free: class
 		end
 
 end

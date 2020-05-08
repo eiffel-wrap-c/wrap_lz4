@@ -71,6 +71,8 @@ feature -- Access
 			create src_c_string.make (src)
 			create dst_c_string.make (dst)
 			Result := c_lz4_compress_fast_ext_state (state, src_c_string.item, dst_c_string.item, srcsize, dstcapacity, acceleration)
+		ensure
+			instance_free: class
 		end
 
 	lz4_compress_dest_size (src: STRING; dst: STRING; srcsizeptr: POINTER; targetdstsize: INTEGER): INTEGER 
@@ -81,6 +83,8 @@ feature -- Access
 			create src_c_string.make (src)
 			create dst_c_string.make (dst)
 			Result := c_lz4_compress_dest_size (src_c_string.item, dst_c_string.item, srcsizeptr, targetdstsize)
+		ensure
+			instance_free: class
 		end
 
 	lz4_decompress_safe_partial (src: POINTER; dst: POINTER; srcsize: INTEGER; targetoutputsize: INTEGER; dstcapacity: INTEGER): INTEGER
@@ -100,6 +104,8 @@ feature -- Access
 			create src_c_string.make (src)
 			create dst_c_string.make (dst)
 			Result := c_lz4_compress_fast_continue (streamptr.item, src_c_string.item, dst_c_string.item, srcsize, dstcapacity, acceleration)
+		ensure
+			instance_free: class
 		end
 
 	lz4_decompress_safe_continue (lz4_streamdecode: LZ4_STREAM_DECODE_U_UNION_API; src: STRING; dst: STRING; srcsize: INTEGER; dstcapacity: INTEGER): INTEGER 
@@ -110,6 +116,8 @@ feature -- Access
 			create src_c_string.make (src)
 			create dst_c_string.make (dst)
 			Result := c_lz4_decompress_safe_continue (lz4_streamdecode.item, src_c_string.item, dst_c_string.item, srcsize, dstcapacity)
+		ensure
+			instance_free: class
 		end
 
 	lz4_decompress_safe_using_dict (src: POINTER; dst: POINTER; srcsize: INTEGER; dstcapcity: INTEGER; dictstart: POINTER; dictsize: INTEGER): INTEGER
@@ -147,6 +155,8 @@ feature -- Access
 			create source_c_string.make (source)
 			create dest_c_string.make (dest)
 			Result := c_lz4_compress_with_state (state, source_c_string.item, dest_c_string.item, inputsize)
+		ensure
+			instance_free: class
 		end
 
 	lz4_compress_limited_output_with_state (state: POINTER; source: STRING; dest: STRING; inputsize: INTEGER; maxoutputsize: INTEGER): INTEGER 
@@ -157,6 +167,8 @@ feature -- Access
 			create source_c_string.make (source)
 			create dest_c_string.make (dest)
 			Result := c_lz4_compress_limited_output_with_state (state, source_c_string.item, dest_c_string.item, inputsize, maxoutputsize)
+		ensure
+			instance_free: class
 		end
 
 	lz4_compress_continue (lz4_streamptr: LZ4_STREAM_U_UNION_API; source: STRING; dest: STRING; inputsize: INTEGER): INTEGER 
@@ -167,6 +179,8 @@ feature -- Access
 			create source_c_string.make (source)
 			create dest_c_string.make (dest)
 			Result := c_lz4_compress_continue (lz4_streamptr.item, source_c_string.item, dest_c_string.item, inputsize)
+		ensure
+			instance_free: class
 		end
 
 	lz4_compress_limited_output_continue (lz4_streamptr: LZ4_STREAM_U_UNION_API; source: STRING; dest: STRING; inputsize: INTEGER; maxoutputsize: INTEGER): INTEGER 
@@ -177,6 +191,8 @@ feature -- Access
 			create source_c_string.make (source)
 			create dest_c_string.make (dest)
 			Result := c_lz4_compress_limited_output_continue (lz4_streamptr.item, source_c_string.item, dest_c_string.item, inputsize, maxoutputsize)
+		ensure
+			instance_free: class
 		end
 
 	lz4_decompress_safe_with_prefix64k (src: POINTER; dst: POINTER; compressedsize: INTEGER; maxdstsize: INTEGER): INTEGER
@@ -214,6 +230,8 @@ feature -- Access
 			create src_c_string.make (src)
 			create dst_c_string.make (dst)
 			Result := c_lz4_decompress_fast_continue (lz4_streamdecode.item, src_c_string.item, dst_c_string.item, originalsize)
+		ensure
+			instance_free: class
 		end
 
 	lz4_decompress_fast_using_dict (src: POINTER; dst: POINTER; originalsize: INTEGER; dictstart: POINTER; dictsize: INTEGER): INTEGER

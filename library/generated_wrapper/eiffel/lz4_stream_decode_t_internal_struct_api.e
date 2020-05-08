@@ -25,46 +25,46 @@ feature -- Measurement
 
 feature {ANY} -- Member Access
 
-	externaldict:  detachable STRING
+	externaldict:  detachable C_STRING
 			-- Access member `externalDict`
 		require
 			exists: exists
 		do
 			if attached c_externaldict (item) as l_ptr then
-				Result := (create {C_STRING}.make_by_pointer (l_ptr)).string
+				create Result.make_by_pointer (l_ptr)
 			end
 		ensure
 			result_void: Result = Void implies c_externaldict (item) = default_pointer
-			result_not_void: attached Result as l_result implies l_result.same_string ((create {C_STRING}.make_by_pointer (item)).string)
+			result_not_void: attached Result as l_result implies l_result.string.same_string ((create {C_STRING}.make_by_pointer (item)).string)
 		end
 
-	set_externaldict (a_value: STRING) 
+	set_externaldict (a_value: C_STRING) 
 			-- Change the value of member `externalDict` to `a_value`.
 		require
 			exists: exists
 		do
-			set_c_externaldict (item, (create {C_STRING}.make (a_value)).item )
+			set_c_externaldict (item, a_value.item )
 		end
 
-	prefixend:  detachable STRING
+	prefixend:  detachable C_STRING
 			-- Access member `prefixEnd`
 		require
 			exists: exists
 		do
 			if attached c_prefixend (item) as l_ptr then
-				Result := (create {C_STRING}.make_by_pointer (l_ptr)).string
+				create Result.make_by_pointer (l_ptr)
 			end
 		ensure
 			result_void: Result = Void implies c_prefixend (item) = default_pointer
-			result_not_void: attached Result as l_result implies l_result.same_string ((create {C_STRING}.make_by_pointer (item)).string)
+			result_not_void: attached Result as l_result implies l_result.string.same_string ((create {C_STRING}.make_by_pointer (item)).string)
 		end
 
-	set_prefixend (a_value: STRING) 
+	set_prefixend (a_value: C_STRING) 
 			-- Change the value of member `prefixEnd` to `a_value`.
 		require
 			exists: exists
 		do
-			set_c_prefixend (item, (create {C_STRING}.make (a_value)).item )
+			set_c_prefixend (item, a_value.item )
 		end
 
 	extdictsize: INTEGER

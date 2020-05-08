@@ -38,7 +38,7 @@ feature {NONE} -- Initialization
 				-- text to be compressed later.
 			src := "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor site amat."
 				-- LZ4 provides a function that will tell you the maximum size of compressed output based on input data via LZ4_compressBound().
-  			max_dst_size := lz4.lz4_compress_bound(src.count);
+  			max_dst_size := {LZ4_FUNCTIONS}.lz4_compress_bound(src.count);
 
   				-- We will use that size for our destination boundary when allocating space.
   			create compressed_data.make_filled ('%U', max_dst_size)
@@ -46,7 +46,7 @@ feature {NONE} -- Initialization
 				-- That's all the information and preparation LZ4 needs to compress *src into *compressed_data.
 				-- Invoke LZ4_compress_default now with our size values and pointers to our memory locations.
 				-- Save the return value for error checking.
-			compressed_data_size := lz4.lz4_compress_default (src, compressed_data, src.count, max_dst_size)
+			compressed_data_size := {LZ4_FUNCTIONS}.lz4_compress_default (src, compressed_data, src.count, max_dst_size)
 
 			if compressed_data_size <= 0 then
 				print ("%N A 0 or negative result from LZ4_compress_default() indicates a failure trying to compress the data.")
@@ -74,7 +74,7 @@ feature {NONE} -- Initialization
 				--// where the `regen_buffer` memory location is, and how large regen_buffer (uncompressed) output will be.
 				--// Again, save the return_value.
 
-			decompressed_size := lz4.lz4_decompress_safe (compressed_data, regen_buffer, compressed_data_size, src.count)
+			decompressed_size := {LZ4_FUNCTIONS}.lz4_decompress_safe (compressed_data, regen_buffer, compressed_data_size, src.count)
 
 			if decompressed_size >= 0 then
 			    print("%NWe successfully decompressed some data!")
@@ -95,12 +95,5 @@ feature {NONE} -- Initialization
  			 end
 		end
 
-
-feature {NONE} -- Implementation
-
-	lz4: LZ4_FUNCTIONS
-		once
-			create Result
-		end
 
 end
