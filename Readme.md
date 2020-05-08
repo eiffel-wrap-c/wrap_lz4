@@ -14,6 +14,30 @@ lz4 is Extremely Fast Compression algorithm.
 ## Download and  Install
 
 ### Linux
+Building LZ4 - Using vcpkg
+
+You can download and install LZ4 using the vcpkg dependency manager:
+
+	git clone https://github.com/Microsoft/vcpkg.git
+	cd vcpkg
+	./bootstrap-vcpkg.sh
+	./vcpkg integrate install
+	vcpkg install lz4
+	
+Then copy the header files to `/usr/local/include` 
+	
+
+	cd vcpkg/installed/x64-linux/include
+	cp lz4*.h /usr/local/include
+
+and the library to `/usr/local/lib`
+
+	cd vcpkg/installed/x64-linux/lib
+	cp liblz4.a /usr/local/lib
+
+
+If you use other configuration, be sure to update the Library configuration scripts and the eiffel configuration file
+with the specific locations to the headers and lib.
 
 ### Windows
 
