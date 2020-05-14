@@ -6,7 +6,6 @@ note
 			
 			Example program to demonstrate the basic usage of the compress/decompress functions within lz4.c/lz4.h
 
-
 	]"
 	date: "$Date$"
 	revision: "$Revision$"

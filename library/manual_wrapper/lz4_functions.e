@@ -1,6 +1,5 @@
 note
 	description: "Summary description for {LZ4_FUNCTIONS}."
-	author: ""
 	date: "$Date$"
 	revision: "$Revision$"
 

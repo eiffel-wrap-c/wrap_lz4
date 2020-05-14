@@ -15,7 +15,7 @@ feature {NONE} -- Initialization
 	library_version_number
 		do
 			print ("%N Lz4, library version number: ")
-			print  (LZ4.lz4_version_number)
+			print  ({LZ4_FUNCTIONS}.lz4_version_number)
 			print ("%N")
 		end
 
@@ -25,7 +25,7 @@ feature {NONE} -- Initialization
 			l_ptr: POINTER
 		do
 			print ("%N Lz4, library version string: ")
-			l_ptr := LZ4.lz4_version_string
+			l_ptr := {LZ4_FUNCTIONS}.lz4_version_string
 			if l_ptr /= default_pointer then
 				print (create {STRING}.make_from_c (l_ptr))
 			else
@@ -34,13 +34,5 @@ feature {NONE} -- Initialization
 			print ("%N")
 		end
 
-
-
-feature -- Implementation
-
-	LZ4: LZ4_FUNCTIONS_API
-		once
-			create Result
-		end
 
 end
