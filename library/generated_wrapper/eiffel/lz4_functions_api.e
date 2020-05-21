@@ -63,7 +63,7 @@ feature -- Access
 			]"
 		end
 
-	lz4_compress_fast_ext_state (state: POINTER; src: STRING; dst: STRING; srcsize: INTEGER; dstcapacity: INTEGER; acceleration: INTEGER): INTEGER 
+	lz4_compress_fast_ext_state (state: POINTER; src: STRING_8; dst: STRING_8; srcsize: INTEGER; dstcapacity: INTEGER; acceleration: INTEGER): INTEGER 
 		local
 			src_c_string: C_STRING
 			dst_c_string: C_STRING
@@ -75,7 +75,7 @@ feature -- Access
 			instance_free: class
 		end
 
-	lz4_compress_dest_size (src: STRING; dst: STRING; srcsizeptr: POINTER; targetdstsize: INTEGER): INTEGER 
+	lz4_compress_dest_size (src: STRING_8; dst: STRING_8; srcsizeptr: POINTER; targetdstsize: INTEGER): INTEGER 
 		local
 			src_c_string: C_STRING
 			dst_c_string: C_STRING
@@ -96,7 +96,7 @@ feature -- Access
 			]"
 		end
 
-	lz4_compress_fast_continue (streamptr: LZ4_STREAM_U_UNION_API; src: STRING; dst: STRING; srcsize: INTEGER; dstcapacity: INTEGER; acceleration: INTEGER): INTEGER 
+	lz4_compress_fast_continue (streamptr: LZ4_STREAM_U_UNION_API; src: STRING_8; dst: STRING_8; srcsize: INTEGER; dstcapacity: INTEGER; acceleration: INTEGER): INTEGER 
 		local
 			src_c_string: C_STRING
 			dst_c_string: C_STRING
@@ -108,7 +108,7 @@ feature -- Access
 			instance_free: class
 		end
 
-	lz4_decompress_safe_continue (lz4_streamdecode: LZ4_STREAM_DECODE_U_UNION_API; src: STRING; dst: STRING; srcsize: INTEGER; dstcapacity: INTEGER): INTEGER 
+	lz4_decompress_safe_continue (lz4_streamdecode: LZ4_STREAM_DECODE_U_UNION_API; src: STRING_8; dst: STRING_8; srcsize: INTEGER; dstcapacity: INTEGER): INTEGER 
 		local
 			src_c_string: C_STRING
 			dst_c_string: C_STRING
@@ -147,7 +147,7 @@ feature -- Access
 			]"
 		end
 
-	lz4_compress_with_state (state: POINTER; source: STRING; dest: STRING; inputsize: INTEGER): INTEGER 
+	lz4_compress_with_state (state: POINTER; source: STRING_8; dest: STRING_8; inputsize: INTEGER): INTEGER 
 		local
 			source_c_string: C_STRING
 			dest_c_string: C_STRING
@@ -159,7 +159,7 @@ feature -- Access
 			instance_free: class
 		end
 
-	lz4_compress_limited_output_with_state (state: POINTER; source: STRING; dest: STRING; inputsize: INTEGER; maxoutputsize: INTEGER): INTEGER 
+	lz4_compress_limited_output_with_state (state: POINTER; source: STRING_8; dest: STRING_8; inputsize: INTEGER; maxoutputsize: INTEGER): INTEGER 
 		local
 			source_c_string: C_STRING
 			dest_c_string: C_STRING
@@ -171,7 +171,7 @@ feature -- Access
 			instance_free: class
 		end
 
-	lz4_compress_continue (lz4_streamptr: LZ4_STREAM_U_UNION_API; source: STRING; dest: STRING; inputsize: INTEGER): INTEGER 
+	lz4_compress_continue (lz4_streamptr: LZ4_STREAM_U_UNION_API; source: STRING_8; dest: STRING_8; inputsize: INTEGER): INTEGER 
 		local
 			source_c_string: C_STRING
 			dest_c_string: C_STRING
@@ -183,7 +183,7 @@ feature -- Access
 			instance_free: class
 		end
 
-	lz4_compress_limited_output_continue (lz4_streamptr: LZ4_STREAM_U_UNION_API; source: STRING; dest: STRING; inputsize: INTEGER; maxoutputsize: INTEGER): INTEGER 
+	lz4_compress_limited_output_continue (lz4_streamptr: LZ4_STREAM_U_UNION_API; source: STRING_8; dest: STRING_8; inputsize: INTEGER; maxoutputsize: INTEGER): INTEGER 
 		local
 			source_c_string: C_STRING
 			dest_c_string: C_STRING
@@ -222,7 +222,7 @@ feature -- Access
 			]"
 		end
 
-	lz4_decompress_fast_continue (lz4_streamdecode: LZ4_STREAM_DECODE_U_UNION_API; src: STRING; dst: STRING; originalsize: INTEGER): INTEGER 
+	lz4_decompress_fast_continue (lz4_streamdecode: LZ4_STREAM_DECODE_U_UNION_API; src: STRING_8; dst: STRING_8; originalsize: INTEGER): INTEGER 
 		local
 			src_c_string: C_STRING
 			dst_c_string: C_STRING
