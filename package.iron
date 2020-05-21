@@ -1,0 +1,19 @@
+package wrap_lz4
+
+project
+	wrap_lz4 = "library/wrap_lz4.ecf"
+
+note
+	title: Eiffel wrap_lz4
+	description: "[
+	Eiffel binding for lz4 - Extremely fast compression library. 
+	lz4 is Extremely Fast Compression algorithm.		
+		]"
+
+	tags: lz4, compression, library , wrapc 
+	license: EFL
+	copyright: Copyright (c)  2020 Javier Velilla, Eiffel Software and others.
+	link[license]: "license" "https://github.com/eiffel-wrap-c/wrap_lz4/blob/master/license.lic"
+	link[github]: "project"https://github.com/eiffel-wrap-c/wrap_lz4
+
+end
